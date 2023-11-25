@@ -19,6 +19,19 @@ const funcoes = {
         payload: observacao
       }
     )
+  },
+  LembreteCriado: async (lembrete) => {
+    lembrete.status = 
+    lembrete.texto.toLowerCase().includes('importante') ? 'importante':
+    lembrete.texto.toLowerCase().includes('urgente') ? 'urgente' :
+      'comum'
+    await axios.post(
+      'http://localhost:10000/eventos',
+      {
+        type: 'LembreteClassificado',
+        payload: lembrete
+      }
+    )
   }
 }
 
